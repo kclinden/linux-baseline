@@ -365,15 +365,15 @@ control 'sysctl-31a' do
   end
 end
 
-control 'sysctl-31b' do
-  impact 1.0
-  title 'Secure Core Dumps - dump path'
-  desc 'Ensure that core dumps are done with fully qualified path'
-  only_if { kernel_parameter('fs.suid_dumpable').value == 2 && !container_execution }
-  describe kernel_parameter('kernel.core_pattern') do
-    its(:value) { should match %r{^\|?/.*} }
-  end
-end
+# control 'sysctl-31b' do
+#   impact 1.0
+#   title 'Secure Core Dumps - dump path'
+#   desc 'Ensure that core dumps are done with fully qualified path'
+#   only_if { kernel_parameter('fs.suid_dumpable').value == 2 && !container_execution }
+#   describe kernel_parameter('kernel.core_pattern') do
+#     its(:value) { should match %r{^\|?/.*} }
+#   end
+# end
 
 control 'sysctl-32' do
   impact 1.0
